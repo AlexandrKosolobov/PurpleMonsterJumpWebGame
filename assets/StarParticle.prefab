@@ -21,13 +21,10 @@
     "_components": [
       {
         "__id__": 2
-      },
-      {
-        "__id__": 3
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 3
     },
     "_opacity": 255,
     "_color": {
@@ -91,7 +88,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 1,
-    "_custom": false,
+    "_custom": true,
     "_file": {
       "__uuid__": "b8223619-7e38-47c4-841f-9160c232495a"
     },
@@ -99,11 +96,11 @@
       "__uuid__": "bb42ed8e-0867-4584-ad63-b6f84f83bba8"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": true,
     "autoRemoveOnFinish": true,
     "totalParticles": 200,
-    "duration": -1,
+    "duration": 0.19999999999999998,
     "emissionRate": 999.999985098839,
     "life": 0.20000000298023224,
     "lifeVar": 0.5,
@@ -137,7 +134,7 @@
     },
     "angle": 360,
     "angleVar": 360,
-    "startSize": 3.369999885559082,
+    "startSize": 0,
     "startSizeVar": 50,
     "endSize": 30.31999969482422,
     "endSizeVar": 0,
@@ -177,19 +174,6 @@
     "rotatePerS": 0,
     "rotatePerSVar": 0,
     "_N$preview": true,
-    "_id": ""
-  },
-  {
-    "__type__": "9cdcaLBupNND4Gwh2Q5BJ6S",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "particleSystem": {
-      "__id__": 2
-    },
     "_id": ""
   },
   {

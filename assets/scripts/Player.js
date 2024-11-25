@@ -18,12 +18,24 @@ cc.Class({
     },
 
     runJumpAction() {
-        var startJump = cc.tween().call(() => { this.isJumping = true });
-        var jumpUp = cc.tween().by(this.jumpDuration, { y: this.jumpHeight }, { easing: 'sineOut' });
-        var jumpDown = cc.tween().by(this.jumpDuration, { y: -this.jumpHeight }, { easing: 'sineIn' });
-        var endJump = cc.tween().call(() => { this.isJumping = false });
+        var startJump = cc.tween()
+        .call(() => { this.isJumping = true });
+        var jumpUp = cc.tween()
+        .by(this.jumpDuration, { y: this.jumpHeight}, { easing: 'sineOut' });
+        var jumpDown = cc.tween()
+        .by(this.jumpDuration, { y: -this.jumpHeight}, { easing: 'sineIn' });
+        var endJump = cc.tween()
+        .call(() => { this.isJumping = false });
 
-        var tween = cc.tween().sequence(startJump, jumpUp, jumpDown, endJump);
+        var scaleJump = cc.tween()
+        .to(this.jumpDuration * 0.6, {scaleX: 0.4, scaleY: 1.5}, {easing: 'sineOut'})
+        .to(this.jumpDuration * 0.4, {scaleX: 1, scaleY: 0.6}, {easing: 'sineIn'})
+        .to(this.jumpDuration * 0.8, {scaleX: 0.4, scaleY: 1.5}, {easing: 'sineIn'})
+        .to(this.jumpDuration * 0.2, {scaleX: 1.6, scaleY: 0.3}, {easing: 'sineOut'})
+        .to(this.jumpDuration * 0.2, {scaleX: 1, scaleY: 1}, {easing: 'sineIn'})
+        
+        var jumpMove = cc.tween().sequence(startJump, jumpUp, jumpDown, endJump)
+        var tween = cc.tween().parallel(jumpMove, scaleJump);
 
         return tween;
     },
