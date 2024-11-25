@@ -91,6 +91,7 @@ cc.Class(
         this.starDuration *= this.starDurationModificator;
         // Particles play on load
         this.starParticle = cc.instantiate(this.starParticlesPrefab);
+        this.node.addChild(this.starParticle);
         this.starParticle.setPosition(this.star.node.getPosition());
         this.star.node.setPosition(this.getNewStarPosition());
         this.scoreLabel.setScore(this.score);
