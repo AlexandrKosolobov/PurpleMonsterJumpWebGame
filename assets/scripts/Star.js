@@ -6,60 +6,33 @@ cc.Class(
 
     properties: 
     {
-
-        pickRadius: 60,
-
-        game: 
-        {
-            default: null,
-            type: cc.Node
-        }
         
-    },
-
-    getPlayerDistance() 
-    {
-        if (typeof this.game !== 'undefined')
-        {
-            var playerPos = this.game.playerNode.getPosition();
-        }
-        else
-        {
-            cc.log("Star.js: typeof this.game == undefined");
-            return 0;
-        }
-
-        var dist = this.node.position.sub(playerPos).mag();
-        return dist;
-    },
-
-    onPicked() 
-    {
-        if (typeof this.game !== 'undefined')
-        {
-            this.game.onStarPicked();
-        }
-        else
-        {
-            cc.log("Star.js: typeof this.game == undefined");
-            this.destroy();
-            return 0;
-        }
     },
 
     onLoad() 
     {
-        // Using cc.find becouse Star.js is using for cc.Prefab and can't be preinitialized
+        // Using cc.find because Star.js is using for cc.Prefab
         this.game = cc.find("Canvas").getComponent("Game");
+        this.pickRadius = 60;
     },
 
-    update(dt) 
+    update() 
+    {
+        this.checkStarPicked();
+    },
+
+    getPlayerDistance() 
+    {
+        var playerPos = this.game.player.node.getPosition();
+        var dist = this.node.position.sub(playerPos).mag();
+        return dist;
+    },
+
+    checkStarPicked()
     {
         if (this.getPlayerDistance() < this.pickRadius) 
         {
-            this.onPicked();
-            return;
+            this.game.onStarPicked();
         }
     },
-
 });

@@ -6,8 +6,6 @@ cc.Class(
 
     properties: 
     {
-        timerDuration: 0,
-
         game:
         {
             default: null,
@@ -30,6 +28,7 @@ cc.Class(
     setTimer(dt)
     {
         this.bar.progress = dt;
+        this.timerDuration = this.game.starDuration;
     },
 
     update(dt)

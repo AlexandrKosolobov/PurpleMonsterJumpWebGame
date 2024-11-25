@@ -1,7 +1,7 @@
 {
-  "title": "start_project",
+  "title": "PurpleMonster",
   "packageName": "org.cocos2d.demo",
-  "startScene": "a4d1dc41-f300-4686-baf3-6a3545afdd4a",
+  "startScene": "1be36250-3d29-4156-9af0-ac6a20b42058",
   "excludeScenes": [],
   "includeSDKBox": false,
   "orientation": {
@@ -10,7 +10,7 @@
     "portrait": false,
     "upsideDown": false
   },
-  "webOrientation": "auto",
+  "webOrientation": "portrait",
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
   "mainCompressionType": "merge_all_json",

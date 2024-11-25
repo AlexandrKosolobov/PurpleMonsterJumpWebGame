@@ -9,6 +9,12 @@ cc.Class({
         maxMoveSpeed: 400,
         accel: 1000,
         deccel: 0.92,
+
+        jumpAudio:
+        {
+            default: null,
+            type: cc.AudioSource
+        }
     },
 
     runJumpAction() {
@@ -64,6 +70,8 @@ cc.Class({
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+
+        this.canvas = cc.director.getScene().getChildByName("Canvas");
     },
 
     update(dt) {
@@ -76,6 +84,7 @@ cc.Class({
         }
 
         if (this.isWPressed && !this.isJumping) {
+            this.jumpAudio.play();
             this.jumpAction.start();
         }
         
@@ -84,6 +93,10 @@ cc.Class({
         }
 
         this.node.x += this.xSpeed * dt;
+        
+        if (this.canvas.width/2 < this.node.x + this.node.width/2 
+            || -this.canvas.width/2 > this.node.x - this.node.width/2) 
+            this.xSpeed-=2*this.xSpeed;
     },
 
     onDestroy() {

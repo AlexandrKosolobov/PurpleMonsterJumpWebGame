@@ -676,7 +676,7 @@
       "array": [
         0,
         0,
-        212.867381866246,
+        316.972502433212,
         0,
         0,
         0,
@@ -761,7 +761,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 0,
-      "height": 50.4
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -818,8 +818,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "977cfe9b-21c7-498e-b060-541800511a8b"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,

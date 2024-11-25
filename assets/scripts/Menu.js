@@ -14,48 +14,54 @@ cc.Class({
 
     onLoad()
     {
-        this.bestScore = 0;
-        this.newScore = 0;
-        this.isMainSceneLoaded = false;
-        cc.director.preloadScene("MainScene", this.onProgressMainScene, this.onLoadedMainScene);
+        this.score = this.getScore()
+        this.bestScore = this.getBestScore();
+
+        cc.director.preloadScene("MainScene");
     },
 
-    onProgressMainScene(completedCount, totalCount, item)
+    getScore()
     {
-
+        var raw = document.cookie.match(/(score=)\d{1,}/g);
+        if(raw != null) return raw[0] == undefined ? 0 : raw[0].match(/\d{1,}/g);
+        document.cookie = "score=0";
+        return 0;
     },
 
-    onLoadedMainScene(error)
+    getBestScore()
     {
-
+        var raw = document.cookie.match(/(bestScore=)\d{1,}/g);
+        if(raw != null) return raw[0] == undefined ? 0 : raw[0].match(/\d{1,}/g);
+        document.cookie = "bestScore=0";
+        return 0;
     },
 
-    onGameOver()
+    start()
     {
-        this.newScore = document.cookie.match(/(score=)\d{1,}/g)[0].match(/\d{1,}/g)[0];
-        this.bestScore = document.cookie.match(/(bestScore=)\d{1,}/g)[0].match(/\d{1,}/g)[0];
+        this.showScore();
+    },
 
-        if (this.bestScore = "") this.bestScore = 0;
+    showScore()
+    {
+        if(this.score == 'undefined') this.score = 0;
+        if(this.bestScore == 'undefined') this.bestScore = 0;
 
-        if(this.newScore > this.bestScore)
+        if(Number(this.score) > Number(this.bestScore))
         {
-            this.bestScore = this.newScore;
-            document.bestScore = "bestScore=" + this.newScore;
+            this.bestScore = this.score;
+            document.cookie = "bestScore=" + this.score;
         }
-        this.scoreLabel.string = "Game score: " + this.newScore + "\nBest score: " + this.bestScore;
+        this.scoreLabel.string = "Game score: " + this.score + "\nBest score: " + this.bestScore;
     },
 
     play()
     {
-        if (!this.isMainSceneLoaded)
-        {
-            this.isMainSceneLoaded = true;
-            cc.director.loadScene("MainScene");
-        }
-        else
-        {
-            cc.director.runScene("MainScene");
-        }
+        cc.director.loadScene("MainScene");
     },
+
+    onDestroy()
+    {
+        document.cookie = "score=0";
+    }
 
 });
