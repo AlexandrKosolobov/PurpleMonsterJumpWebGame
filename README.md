@@ -18,4 +18,5 @@ CocosCreator_2.4:
 Score and best score saves as a cookie, so you can see your score even after game was reloaded. To reset your score clear cookie.
 
 Gameplay preview:
+
 ![Screen Recording 2024-11-25 190956](https://github.com/user-attachments/assets/a25b361b-c4d7-4c00-857a-12637f6dfae7)
